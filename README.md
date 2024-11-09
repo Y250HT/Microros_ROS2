@@ -21,3 +21,9 @@ sudo chmod 777 /dev/ttyACM*
 . install/setup.bash
 ros2 run micro_ros_agent micro_ros_agent serial -b 115200 --dev /dev/ttyACM0 -v6
 ```
+## How to test
+You can use teleop_twist_keyboard to test(ikjl,)
+```bash
+sudo apt-get install ros-humble-teleop*
+ros2 run teleop_twist_keyboard teleop_twist_keyboard
+```
