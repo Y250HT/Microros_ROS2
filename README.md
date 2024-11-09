@@ -1,7 +1,23 @@
 # microros_ws_ros2
-The nine-axis ARHS attitude sensor MEMS magnetometer bought from yahboom performs well in ROS1, but when it is used in ROS2, the data of a number of sensors will tend to zero indefinitely and the data will float in chaos. The warehouse has rewritten the driver code of the IMU CMP10A. So that it can read the data correctly in ROS2 HUMBLE.
+The Microros chassis host program for our robot helps you communicate with the esp32 on the chassis and the microros control program on it.
 
+## Install dependencies
+```bash
+cd ~/microros_ws_ros2/
+rosdep update
+rosdep install --from-paths src --ignore-src -r -y --rosdistro humble
+colcon build
+```
+Maybe you'll need clash to speed things up, because microros programs need to clone other dependencies from github.
 
-<p align="center">
-  <img src="https://user-images.githubusercontent.com/82339529/173870511-e750a589-7e66-495f-afd1-5799667f23de.jpg" />
-</p>
+## If your chassis is connected via wifi
+```bash
+. install/setup.bash
+ros2 run micro_ros_agent micro_ros_agent udp4 --port 8888 -v6
+```
+## If your chassis is connected through a serial port
+```bash
+sudo chmod 777 /dev/ttyACM*
+. install/setup.bash
+ros2 run micro_ros_agent micro_ros_agent serial -b 115200 --dev /dev/ttyACM0 -v6
+```
