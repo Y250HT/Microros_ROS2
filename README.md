@@ -1,4 +1,4 @@
-# microros_ws_ros2
+# Microros_ROS2
 The Microros chassis host program for our robot helps you communicate with the esp32 on the chassis and the microros control program on it.
 
 ## Install dependencies
